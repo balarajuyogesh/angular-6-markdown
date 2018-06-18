@@ -118,7 +118,7 @@ npm-windows-upgrade                      # To upgrade npm on windows
 * Install VS code on windows
 
 ```powershell
-PS> choco install VisualStudioCOde -y
+PS> choco install VisualStudioCode -y
 PS> code .                                    # To verify VS Code installation
 ```
 
