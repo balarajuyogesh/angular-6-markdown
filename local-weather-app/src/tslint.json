@@ -12,6 +12,18 @@
             "element",
             "app",
             "kebab-case"
+        ],
+        "quotemark": [
+          true,
+          "single"
+        ],
+        "semicolon": [
+          true,
+          "never"
+        ],
+        "max-line-length": [
+          true,
+          120
         ]
     }
 }
