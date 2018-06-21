@@ -3,23 +3,33 @@
 - [Aim:](#aim)
 - [Philosophy](#philosophy)
 - [Angular in Full Stack architecture in this app](#angular-in-full-stack-architecture-in-this-app)
-  - [Step 1: Wireframe design](#step-1-wireframe-design)
-  - [Step 2: High level architecture](#step-2-high-level-architecture)
-  - [Step 3: Folder Structure](#step-3-folder-structure)
-  - [Step 4: Set up your development directory](#step-4-set-up-your-development-directory)
-  - [Step 4: Generate your Angular application](#step-4-generate-your-angular-application)
+  - [Step 1: Wireframe design](#step-1--wireframe-design)
+  - [Step 2: High level architecture](#step-2--high-level-architecture)
+  - [Step 3: Folder Structure](#step-3--folder-structure)
+  - [Step 4: Set up your development directory](#step-4--set-up-your-development-directory)
+  - [Step 4: Generate your Angular application](#step-4--generate-your-angular-application)
     - [Initializing Angular App](#initializing-angular-app)
   - [IDE Settings](#ide-settings)
-- [Coding Style [For JavaScript use StandardJS settings](https:standardjs.com)](#coding-style-for-javascript-use-standardjs-settingshttpsstandardjscom)
+- [Coding Style For JavaScript use StandardJS settings](#coding-style-for-javascript-use-standardjs-settingshttps-standardjscom)
 - [Planning a feature road map using Waffle](#planning-a-feature-road-map-using-waffle)
   - [Creating issues for your Local weather app](#creating-issues-for-your-local-weather-app)
 - [Creating UI Elements using components and INterfaces](#creating-ui-elements-using-components-and-interfaces)
-  - [Beggining Feature 1: Display Current Location weather information for the current day](#beggining-feature-1-display-current-location-weather-information-for-the-current-day)
+  - [Beggining Feature 1: Display Current Location weather information for the current day](#beggining-feature-1--display-current-location-weather-information-for-the-current-day)
   - [Adding an Angular component](#adding-an-angular-component)
   - [Define your model using interfaces](#define-your-model-using-interfaces)
   - [Using Angular Services and HttpClient to retrieve data](#using-angular-services-and-httpclient-to-retrieve-data)
+  - [Implementing the HTTP GET operation](#implementing-the-http-get-operation)
+  - [Retrieving service data from a component](#retrieving-service-data-from-a-component)
+  - [Transforms data using RxJS](#transforms-data-using-rxjs)
+  - [Understanding Reactive programming](#understanding-reactive-programming)
+  - [RxJS in Depth Important Article](#rxjs-in-depth-important-articlehttps---xgrommxgithubio-rx-book-content-which-operator-do-i-use-indexhtml)
+  - [Implementing Reactive transformations[Important Article for Frontend Backend Separation]](#implementing-reactive-transformationsimportant-article-for-frontend-backend-separation)
+- [Enhance Angular App with Angular Material](#enhance-angular-app-with-angular-material)
   - [Implementing Layout Scaffolding](#implementing-layout-scaffolding)
-- [Null guarding with Angular using *ngIf: If data exists in ICurrentWeather then only `CurrentWeatherComponent` is rendered](#null-guarding-with-angular-using-ngif-if-data-exists-in-icurrentweather-then-only-currentweathercomponent-is-rendered)
+- [Null guarding with Angular using *ngIf: If data exists in ICurrentWeather then only `CurrentWeatherComponent` is rendered](#null-guarding-with-angular-using-ngif--if-data-exists-in-icurrentweather-then-only-currentweathercomponent-is-rendered)
+    - [Reactive Forms and Componenet Interaction](#reactive-forms-and-componenet-interaction)
+    - [Searching with user input](#searching-with-user-input)
+  - [There are 3 different types subjects[Very important]](#there-are-3-different-types-subjectsvery-important)
 
 <!-- /TOC -->
 
@@ -35,11 +45,11 @@ Reactive programming and RxJS.
 
 * With Angular 6 all platforms are versioned to 6.0.0
 
-|Platform|Previously|With v6|
-|:------------:|:------------:|:---------:|
-|CLI|1.7|6.0|
-|Angular|5.2.10|6.0|
-|Material|5.2.4|6.0|
+| Platform | Previously | With v6 |
+| :------: | :--------: | :-----: |
+| CLI      | 1.7        | 6.0     |
+| Angular  | 5.2.10     | 6.0     |
+| Material | 5.2.4      | 6.0     |
 
 * New commands in Angular CLI
 
@@ -584,51 +594,52 @@ export class WeatherService {
   * Read [API](http://openweathermap.org/current)
   * API call `api.openweathermap.org/data/2.5/weather?q={city name},{country code}`
 
-  ```json
-/* http://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22 */
-  {
-    "coord": {
-      "lon": -0.13,
-      "lat": 51.51
-    },
-    "weather": [
-      {
-        "id": 300,
-        "main": "Drizzle",
-        "description": "light intensity drizzle",
-        "icon": "09d"
-      }
-    ],
-    "base": "stations",
-    "main": {
-      "temp": 280.32,
-      "pressure": 1012,
-      "humidity": 81,
-      "temp_min": 279.15,
-      "temp_max": 281.15
-    },
-    "visibility": 10000,
-    "wind": {
-      "speed": 4.1,
-      "deg": 80
-    },
+```json
+/* http://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22  */
+
+{
+  "coord": {
+    "lon": -0.13,
+    "lat": 51.51
+  },
+  "weather": [
+    {
+      "id": 300,
+      "main": "Drizzle",
+      "description": "light intensity drizzle",
+      "icon": "09d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 280.32,
+    "pressure": 1012,
+    "humidity": 81,
+    "temp_min": 279.15,
+    "temp_max": 281.15
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 4.1,
+    "deg": 80
+  },
     "clouds": {
-      "all": 90
-    },
-    "dt": 1485789600,
-    "sys": {
-      "type": 1,
-      "id": 5091,
-      "message": 0.0103,
-      "country": "GB",
-      "sunrise": 1485762037,
-      "sunset": 1485794875
-    },
-    "id": 2643743,
-    "name": "London",
-    "cod": 200
-  }
-  ```
+    "all": 90
+  },
+  "dt": 1485789600,
+  "sys": {
+    "type": 1,
+    "id": 5091,
+    "message": 0.0103,
+    "country": "GB",
+    "sunrise": 1485762037,
+    "sunset": 1485794875
+  },
+  "id": 2643743,
+  "name": "London",
+  "cod": 200
+}
+```
 
   * This response has some additional content. Therefore this requires **new interface to be created**
   * Create a new Interface named `ICurrentWeatherData` in `weather.service.ts` between the `import` and `@Injectible()` statements
@@ -1287,7 +1298,7 @@ import { ..., MatCardModule } from '@angular/material'
 6. For the temperature on line 10 append `class="mat-display-3 no-margin"`
 7. For the description, on line 12 add `class="mat-caption"` and `fxLayoutAlign="center"`
 
-# Null guarding with Angular using *ngIf: If data exists in ICurrentWeather then only `CurrentWeatherComponent` is rendered 
+# Null guarding with Angular using *ngIf: If data exists in ICurrentWeather then only `CurrentWeatherComponent` is rendered
 
 ```html
 <!-- src/app/current-weather/current-weather.component.html -->
@@ -1393,11 +1404,11 @@ export class CurrentWeatherComponent implements OnInit {
   * Start by including the base theming library `@import '~@angular/material/theming';`
   * Import `@inclue mat-core();` mixin which includes common styles by various components
   * **Import `@inclue mat-core();` should only be included once in your application**
-  * Using Material Palette, select Primary and a secondary color: 
+  * Using Material Palette, select Primary and a secondary color:
   * `mat-palette($base-pallete, $default: 500, $lighter: 100, $darker: 700)`
   * In this application primary color is `500` and secondary color is `A400`
   * Create a new theme and apply it
-  
+
   ```scss
   /* src/localcast-theme.scss */
   @import '~@angular/material/theming';
@@ -1407,7 +1418,7 @@ export class CurrentWeatherComponent implements OnInit {
   $localcast-primary: mat-palette($mat-red, 500);
   $localcast-accent: mat-palette($mat-indigo, A400);
 
-  /* Create a new theme and apply it */ 
+  /* Create a new theme and apply it */
   $localcast-app-theme: mat-light-theme($localcast-primary, $localcast-accent);
 
   @include angular-material-theme($localcast-app-theme);
@@ -1457,7 +1468,7 @@ export class CurrentWeatherComponent implements OnInit {
 > Why mock-up: Wireframe of your app is worth 1000 lines of code
 > This helps you save lot of code writing
 
-> You can checkout https://mockflow.com it supports Material Ui    
+> You can checkout https://mockflow.com it supports Material Ui
 
 3. Using Pen and paper and interactive UI is done
   * Home screen
@@ -1467,7 +1478,7 @@ export class CurrentWeatherComponent implements OnInit {
 ### Searching with user input
 
 1. We will get the search bar on the home screen of the application
-  * User story states 
+  * User story states
     * display forecast information for current location: This implies `inherit GeoLocation functionality`
     * `GeoLocation` is a separate task: challenge is that
       * You are never guaranteed to recieve actual location information
@@ -1487,7 +1498,7 @@ export class CurrentWeatherComponent implements OnInit {
   * Throttle requests
 
 <details>
-<summary>2.1.0 Adding Angular Reactive forms</summary>  
+<summary>2.1.0 Adding Angular Reactive forms</summary>
 
 * Import `ReactiveFormsModule` into our app
 
@@ -1510,7 +1521,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 * Add `MatFormFieldModule` and `MatInputModule` to `material.module`
   * `Each input field should be wrapped in `<mat-form-field>` tag to get most out of Angular material functionality,
-  It also enables easy 2-way data binding, a technique that should be used in moderation and also allows for graceful label validation, 
+  It also enables easy 2-way data binding, a technique that should be used in moderation and also allows for graceful label validation,
   and error message display
   * At a high level `<form>` encapsulates numerous default behaviours for keyboard, screen-reader and browser extension users
 
@@ -1564,7 +1575,7 @@ npx ng g c citySearch --module=app.module
     * `FormControl` is the most basic element that has 1-to-1 relationship with an input field
     * `FormArray` represents repetitive input fields that represent collection of objects
     * `FormGroup` is used to register individual `FormControl` or `FormArray` objects as you add more input fields to a form
-  * Finally `FormBuilder` object is used to more easily orchestrate and maintain the actions of a `FormGroup` which will be studied in lemon-mart application  
+  * Finally `FormBuilder` object is used to more easily orchestrate and maintain the actions of a `FormGroup` which will be studied in lemon-mart application
 
 ```ts
 /* src/app/city-search/city-search.component.ts */
@@ -1637,11 +1648,11 @@ export class CitySearchComponent implements OnInit {
       return this.httpClient
         .get<ICurrentWeatherData>(
           `${environment.baseUrl}api.openweathermap.org/data/2.5/weather?` +
-            `${uriParams}&appid=${environment.appId}`            
+            `${uriParams}&appid=${environment.appId}`
         )
         .pipe(map(data => this.transformToICurrentWeather(data)))
   }
-``` 
+```
 
 * As a positive side effect `getCurrentWeatherHelper` adheres to the Open/Closed principle, becuase it is open to extension by our ability to change the function's behaviour by supplying different `uriParams` and is closed to modification, becuase it won't have to be changed frequently
   * To demonstrate this point, let's implement a new function to get the current weather by lattitude and longitude
@@ -1686,7 +1697,7 @@ export class CitySearchComponent implements OnInit {
   * User input can be a city, zip code or
   * a city and country code or
   * zip code and country code separated by a comma
-3. While city or zip code is required and country code is optional. 
+3. While city or zip code is required and country code is optional.
   * We can use the `String.split` function to parse any potential comma separated input and then trim any whitespace out from the beginning and the end of the string with `String trim`
   * We then assure that we trim all parts of the string by iterating over them with `Array map`
   * We then deal with the optional parameter with the ternary operator ? , only passing in a value if it exists, otherwise leaving it undefined
@@ -1830,7 +1841,7 @@ npx ng g c citySearchTpldriven -m app.module
 ...
   <mat-error *ngIf="search.invalid">
     Type more than one character to search
-  </mat-error>  
+  </mat-error>
 ```
 >  As you can see most of the logic is implemented in the template. And the programmer is required to maintain an active mental model of what's in the template and the controller and switch back and forth between the 2 files to make changes to event handlers and validation logic. We have also lost the input limiting and the ability to prevent service calls when the input is in an invalid state.
 
@@ -1917,12 +1928,12 @@ export class CitySearhTpldrivenComponent implements OnInit {
     * `CitySearchComponent` exposes an `EventEmitter` through an `@Output` property
     > Refer Angular 6 for Enterprise ready web applications
   * Parent components listening for information bubbling up from children components
-    * > Refer Angular 6 for Enterprise ready web applications 
+    * > Refer Angular 6 for Enterprise ready web applications
   * **sibling, parent or children components within a module that work off of similar data streams** : Highly recommended
 
 1. **sibling, parent or children components within a module that work off of similar data streams** : Highly recommended
   * Main reason for componnets to interact is to send or recieve updates to data either provided by the user or received from the server
-  * In Angular your services expose 
+  * In Angular your services expose
     * `RxJS.Observable` endpoints, which are data streams that your componentss can subscribe to.
     * `RxJS.Observer` compliments `RxJS.Observable` as consumer of events emitted by `Observable`
     * `RxJS.Subject` brings he 2 sets of functionality together, in an easy to work with object.
@@ -1937,7 +1948,7 @@ export class WeatherService implements IWeatherService {
   currentWeather: Subject<ICurrentWeather>
   ...
 }
-``` 
+```
 
 * `currentWeather` is still a data stream and does not simply represent one data point. You can subscribe to changes to `currentWeather` data with subscribe, or you can publish changes to it as follows:
 
@@ -1983,7 +1994,7 @@ export class WeatherService implements IWeatherService {
 2. Update the `current-weather` component to subscribe the new `BehaviorSubject`
 
 ```ts
-/* app/src/current-weather/current-weather.component.ts */ 
+/* app/src/current-weather/current-weather.component.ts */
 ...
 ngOnInit() {
   this.weatherService.currentWeather.subscribe(data => (this.current = data ))
@@ -2002,11 +2013,11 @@ this.weatherService
     userInput.length > 1 ? userInput[1] : undefined
   )
   .subscribe(data => this.weatherService.currentWeather.next(data))
-...  
+...
 ```
 
 4. Test your app with `npm start`
-    
+
 5. Optimize more
 
 ```ts
@@ -2017,7 +2028,7 @@ this.weatherService
      userInput.length > 1 ? userInput[1] : undefined
   )
 ...
-```  
+```
 
 ```ts
 /* app/src/weather/weather.service.ts */
@@ -2031,8 +2042,8 @@ export class WeatherService implements IWeatherService {
     )
   }
   ...
-}  
-```      
+}
+```
 
 6. Move City search capability task to done in waffle.io
 
