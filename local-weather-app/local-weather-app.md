@@ -532,7 +532,7 @@ Meaning of Singleton service
 ```ts
 // src/app/app.module.ts
 ...
-import { WeatherService } from './weather/weather.service
+import { WeatherService } from './weather/weather.service'
 @NgModule({
   ...
   providers: [WeatherService],
@@ -549,7 +549,7 @@ import { WeatherService } from './weather/weather.service
 ```ts
 // src/app/app.module.ts
 ...
-import { HttpClientModule } from '@angular/common/http`
+import { HttpClientModule } from '@angular/common/http'
 ...
 @NgModule({
   ...
@@ -585,7 +585,7 @@ export class WeatherService {
   * API call `api.openweathermap.org/data/2.5/weather?q={city name},{country code}`
 
   ```json
-// http://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22
+/* http://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22 */
   {
     "coord": {
       "lon": -0.13,
