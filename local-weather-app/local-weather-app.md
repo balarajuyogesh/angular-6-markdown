@@ -10,7 +10,7 @@
   - [Step 4: Generate your Angular application](#step-4--generate-your-angular-application)
     - [Initializing Angular App](#initializing-angular-app)
   - [IDE Settings](#ide-settings)
-- [Coding Style For JavaScript use StandardJS settings](#coding-style-for-javascript-use-standardjs-settingshttps-standardjscom)
+- [Coding Style For JavaScript use StandardJS settings](#coding-style-for-javascript-use-standardjs-settings)
 - [Planning a feature road map using Waffle](#planning-a-feature-road-map-using-waffle)
   - [Creating issues for your Local weather app](#creating-issues-for-your-local-weather-app)
 - [Creating UI Elements using components and INterfaces](#creating-ui-elements-using-components-and-interfaces)
@@ -22,7 +22,7 @@
   - [Retrieving service data from a component](#retrieving-service-data-from-a-component)
   - [Transforms data using RxJS](#transforms-data-using-rxjs)
   - [Understanding Reactive programming](#understanding-reactive-programming)
-  - [RxJS in Depth Important Article](#rxjs-in-depth-important-articlehttps---xgrommxgithubio-rx-book-content-which-operator-do-i-use-indexhtml)
+  - [RxJS in Depth Important Article](#rxjs-in-depth-important-article)
   - [Implementing Reactive transformations[Important Article for Frontend Backend Separation]](#implementing-reactive-transformationsimportant-article-for-frontend-backend-separation)
 - [Enhance Angular App with Angular Material](#enhance-angular-app-with-angular-material)
   - [Implementing Layout Scaffolding](#implementing-layout-scaffolding)
@@ -249,7 +249,8 @@ npx dev-norms create
     "rbbit.typescript-hero",
 
     "DSKWRK.vscode-generate-getter-setter",
-    "esbenp.prettier-vscode"
+    "esbenp.prettier-vscode",
+    "humao.rest-client"
   ]
 }
 ```
