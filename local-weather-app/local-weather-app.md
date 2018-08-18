@@ -250,7 +250,8 @@ npx dev-norms create
 
     "DSKWRK.vscode-generate-getter-setter",
     "esbenp.prettier-vscode",
-    "humao.rest-client"
+    "humao.rest-client",                  // It does the same job as POSTMAN
+    "infinity1207.angular2-switcher"      // Switching between files in angular Alt+O, Alt + P
   ]
 }
 ```
